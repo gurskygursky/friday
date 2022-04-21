@@ -58,7 +58,7 @@ body {
 .inputContainer input:focus {
     border: none;
     outline: none;
-    border-bottom: 3px solid #2196F3;
+    border-bottom: 3px solid #ffba12;
 }
 
 ::placeholder {
@@ -70,6 +70,7 @@ body {
 .btn {
     color: #fff;
     background-color: #ffba12;
+    font-size: 16px;
     outline: none;
     border: 0;
     padding: 10px 20px;

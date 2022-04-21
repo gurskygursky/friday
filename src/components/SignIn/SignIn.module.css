@@ -66,7 +66,7 @@ body {
 .inputContainer input:focus {
     border: none;
     outline: none;
-    border-bottom: 3px solid #2196F3;
+    border-bottom: 3px solid #ffba12;
 }
 
 ::placeholder {
@@ -113,7 +113,7 @@ body {
     padding-left: 35px;
     /*margin-bottom: 12px;*/
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -135,8 +135,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
+    height: 16px;
+    width: 16px;
     background-color: white;
 }
 
@@ -147,7 +147,7 @@ body {
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: #ffba12;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -164,8 +164,8 @@ body {
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-    left: 9px;
-    top: 5px;
+    left: 4px;
+    top: 0px;
     width: 5px;
     height: 10px;
     border: solid white;
