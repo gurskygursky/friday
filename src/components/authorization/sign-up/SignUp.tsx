@@ -2,13 +2,13 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import s from 'components/SignIn/SignIn.module.css';
+import s from 'components/authorization/sign-up/SignUp.module.css';
 import { PATH } from 'enums/pathes';
 
-export const SignIn = () => (
+export const SignUp = () => (
   <div className={s.box}>
     <form>
-      <span className={s.textCenter}>login</span>
+      <span className={s.textCenter}>Sign Up</span>
       <div className={s.inputContainer}>
         <label htmlFor="inputEmail" className={s.label}>
           <input
@@ -32,20 +32,24 @@ export const SignIn = () => (
         </label>
       </div>
       <div className={s.inputContainer}>
-        <label className={s.container} htmlFor="inputCheckbox">
-          Remember Me
-          <input id="inputCheckbox" type="checkbox" required={false} />
-          <span className={s.checkmark} />
+        <label htmlFor="inputPassword" className={s.label}>
+          <input
+            type="password"
+            id="inputPassword"
+            placeholder="Confirm password"
+            required
+            autoComplete="off"
+          />
         </label>
       </div>
-      <button type="button" className={s.btn}>
-        Sing In
-      </button>
-      <NavLink to={PATH.REGISTRATION_PAGE}>
+      <NavLink to={PATH.LOGIN_PAGE}>
         <button type="button" className={s.btn}>
-          Sign Up
+          Cancel
         </button>
       </NavLink>
+      <button type="button" className={s.btn}>
+        Sign Up
+      </button>
     </form>
   </div>
 );

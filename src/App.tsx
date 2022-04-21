@@ -4,10 +4,10 @@ import './App.css';
 
 import { Route, Routes } from 'react-router-dom';
 
-import { PageNotFound } from 'components/PageNotFound/PageNotFound';
-import { Profile } from 'components/Profile/Profile';
-import { SignIn } from 'components/SignIn/SignIn';
-import { SignUp } from 'components/SignUp/SignUp';
+import { SignIn } from 'components/authorization/sign-in/SignIn';
+import { SignUp } from 'components/authorization/sign-up/SignUp';
+import { PageNotFound } from 'components/page-not-found/PageNotFound';
+import { Profile } from 'components/profile/Profile';
 import { PATH } from 'enums/pathes';
 
 const App = () => (
