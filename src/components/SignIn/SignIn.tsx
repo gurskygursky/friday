@@ -11,18 +11,30 @@ export const SignIn = () => (
       <span className={s.textCenter}>login</span>
       <div className={s.inputContainer}>
         <label htmlFor="inputEmail" className={s.label}>
-          <input type="email" id="inputEmail" placeholder="Email" required />
+          <input
+            type="email"
+            id="inputEmail"
+            placeholder="Email"
+            required
+            autoComplete="off"
+          />
         </label>
       </div>
       <div className={s.inputContainer}>
         <label htmlFor="inputPassword" className={s.label}>
-          <input type="password" id="inputPassword" placeholder="Password" required />
+          <input
+            type="password"
+            id="inputPassword"
+            placeholder="Password"
+            required
+            autoComplete="off"
+          />
         </label>
       </div>
       <div className={s.inputContainer}>
         <label className={s.container} htmlFor="inputCheckbox">
           Remember Me
-          <input id="inputCheckbox" type="checkbox" />
+          <input id="inputCheckbox" type="checkbox" required={false} />
           <span className={s.checkmark} />
         </label>
       </div>

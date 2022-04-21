@@ -11,12 +11,24 @@ export const SignUp = () => (
       <span className={s.textCenter}>Sign Up</span>
       <div className={s.inputContainer}>
         <label htmlFor="inputEmail" className={s.label}>
-          <input type="email" id="inputEmail" placeholder="Email" required />
+          <input
+            type="email"
+            id="inputEmail"
+            placeholder="Email"
+            required
+            autoComplete="off"
+          />
         </label>
       </div>
       <div className={s.inputContainer}>
         <label htmlFor="inputPassword" className={s.label}>
-          <input type="password" id="inputPassword" placeholder="Password" required />
+          <input
+            type="password"
+            id="inputPassword"
+            placeholder="Password"
+            required
+            autoComplete="off"
+          />
         </label>
       </div>
       <div className={s.inputContainer}>
@@ -26,6 +38,7 @@ export const SignUp = () => (
             id="inputPassword"
             placeholder="Confirm password"
             required
+            autoComplete="off"
           />
         </label>
       </div>
@@ -34,7 +47,6 @@ export const SignUp = () => (
           Cancel
         </button>
       </NavLink>
-
       <button type="button" className={s.btn}>
         Sign Up
       </button>
