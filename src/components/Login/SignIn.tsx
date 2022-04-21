@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { NavLink } from 'react-router-dom';
+
 import s from 'components/Login/SignIn.module.css';
+import { PATH } from 'enums/pathes';
 
 export const SignIn = () => (
   <div className={s.box}>
@@ -26,9 +29,11 @@ export const SignIn = () => (
       <button type="button" className={s.btn}>
         Sing In
       </button>
-      <button type="button" className={s.btn}>
-        Sign Up
-      </button>
+      <NavLink to={PATH.REGISTRATION_PAGE}>
+        <button type="button" className={s.btn}>
+          Sign Up
+        </button>
+      </NavLink>
     </form>
   </div>
 );
