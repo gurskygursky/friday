@@ -17,16 +17,24 @@ body {
     display: block;
     text-align: center;
 }
-
 .box {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    /*background-color: rgba(246,251,252, 0.3);*/
-    /*border-radius:3px;*/
-    /*padding:70px 100px;*/
+    background-color: rgba(26,24,29, 0.7);
+    border-radius:3px;
+    padding:70px 100px;
 }
+/*.box {*/
+/*    position: absolute;*/
+/*    left: 50%;*/
+/*    top: 50%;*/
+/*    transform: translate(-50%, -50%);*/
+/*    !*background-color: rgba(246,251,252, 0.3);*!*/
+/*    !*border-radius:3px;*!*/
+/*    !*padding:70px 100px;*!*/
+/*}*/
 
 .inputContainer {
     position: relative;
@@ -69,7 +77,8 @@ body {
 
 .btn {
     color: #fff;
-    background-color: #2196F3;
+    font-size: 16px;
+    background-color: #ffba12;
     outline: none;
     border: 0;
     padding: 10px 20px;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import s from 'components/Login/SignIn.module.css';
+import s from 'components/SignIn/SignIn.module.css';
 import { PATH } from 'enums/pathes';
 
 export const SignIn = () => (

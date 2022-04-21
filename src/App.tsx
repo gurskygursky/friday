@@ -4,8 +4,8 @@ import './App.css';
 
 import { Route, Routes } from 'react-router-dom';
 
-import { SignIn } from 'components/Login/SignIn';
 import { PageNotFound } from 'components/PageNotFound/PageNotFound';
+import { SignIn } from 'components/SignIn/SignIn';
 import { SignUp } from 'components/SignUp/SignUp';
 import { PATH } from 'enums/pathes';
 
