@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import s from 'components/authorization/sign-in/SignIn.module.css';
+import { CustomButton } from 'components/custom-button/CustomButton';
 import { PATH } from 'enums/pathes';
 
 export const SignIn = () => (
@@ -38,13 +39,9 @@ export const SignIn = () => (
           <span className={s.checkmark} />
         </label>
       </div>
-      <button type="button" className={s.btn}>
-        Sign In
-      </button>
+      <CustomButton title="Sign In" onClick={() => {}} />
       <NavLink to={PATH.REGISTRATION_PAGE}>
-        <button type="button" className={s.btn}>
-          Sign Up
-        </button>
+        <CustomButton title="Sign Up" onClick={() => {}} />
       </NavLink>
     </form>
   </div>
