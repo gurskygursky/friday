@@ -4,9 +4,7 @@ import './App.css';
 
 import { Route, Routes } from 'react-router-dom';
 
-import { ForgotPasswordPage } from 'components/authorization/forgot-password';
-import { SignIn } from 'components/authorization/sign-in';
-import { SignUp } from 'components/authorization/sign-up';
+import { ForgotPasswordPage, SignIn, SignUp } from 'components/authorization';
 import { PageNotFound } from 'components/page-not-found';
 import { Profile } from 'components/profile';
 import { PATH } from 'enums/pathes';
