@@ -8,7 +8,6 @@ body {
     font-family: 'Helvetica', sans-serif;
 
 }
-
 .textCenter {
     color: #fff;
     text-transform: uppercase;
@@ -21,36 +20,16 @@ body {
     position: absolute;
     left: 50%;
     top: 50%;
+    height: 300px;
     transform: translate(-50%, -50%);
     background-color: rgba(26,24,29, 0.7);
     border-radius:3px;
     padding:70px 100px;
 }
-/*.box {*/
-/*    position: absolute;*/
-/*    left: 50%;*/
-/*    top: 50%;*/
-/*    transform: translate(-50%, -50%);*/
-/*    !*background-color: rgba(246,251,252, 0.3);*!*/
-/*    !*border-radius:3px;*!*/
-/*    !*padding:70px 100px;*!*/
-/*}*/
-
 .inputContainer {
     position: relative;
     margin-bottom: 25px;
 }
-
-/*.inputContainer .label input {*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    font-size: 16px;*/
-/*    color: #fff;*/
-/*    !*pointer-events: none;*!*/
-/*    transition: all 0.5s ease-in-out;*/
-/*}*/
-
 .label input {
     width: 100%;
     border: 0;

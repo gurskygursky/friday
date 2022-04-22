@@ -13,7 +13,7 @@ export const CustomButton = React.memo((props: ButtonPropsType) => {
     onClick();
   };
   return (
-    <button className={s.btn} onClick={onButtonClick} type="button" disabled>
+    <button className={s.btn} onClick={onButtonClick} type="button">
       {title}
     </button>
   );
