@@ -39,12 +39,6 @@
     opacity: 1;
     transition: 0s;
 }
-
 .btn:active {
     top: 1px;
-}
-.inputContainer input:focus ~ label,
-.inputContainer input:valid ~ label {
-    top: -12px;
-    font-size: 12px;
 }

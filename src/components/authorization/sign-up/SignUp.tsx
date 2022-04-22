@@ -2,8 +2,8 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import s from 'components/authorization/sign-up/SignUp.module.css';
 import { CustomButton } from 'components/custom-button';
+import s from 'components/custom-button/CustomButton.module.css';
 import { PATH } from 'enums/pathes';
 
 export const SignUp = () => (

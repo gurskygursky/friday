@@ -4,11 +4,11 @@ import './App.css';
 
 import { Route, Routes } from 'react-router-dom';
 
-import { ForgotPasswordPage } from 'components/authorization/forgot-password/ForgotPasswordPage';
-import { SignIn } from 'components/authorization/sign-in/SignIn';
-import { SignUp } from 'components/authorization/sign-up/SignUp';
-import { PageNotFound } from 'components/page-not-found/PageNotFound';
-import { Profile } from 'components/profile/Profile';
+import { ForgotPasswordPage } from 'components/authorization/forgot-password';
+import { SignIn } from 'components/authorization/sign-in';
+import { SignUp } from 'components/authorization/sign-up';
+import { PageNotFound } from 'components/page-not-found';
+import { Profile } from 'components/profile';
 import { PATH } from 'enums/pathes';
 
 const App = () => (

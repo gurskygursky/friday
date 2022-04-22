@@ -134,7 +134,7 @@ body {
 /* Style the checkmark/indicator */
 .container .checkmark:after {
     left: 4px;
-    top: 0px;
+    top: 0;
     width: 5px;
     height: 10px;
     border: solid white;
