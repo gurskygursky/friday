@@ -39,7 +39,7 @@ export const SignIn = () => (
         </label>
       </div>
       <button type="button" className={s.btn}>
-        Sing In
+        Sign In
       </button>
       <NavLink to={PATH.REGISTRATION_PAGE}>
         <button type="button" className={s.btn}>
