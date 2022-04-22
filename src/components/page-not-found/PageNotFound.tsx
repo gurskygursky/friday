@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 import s from './PageNotFound.module.css';
 
+import { CustomButton } from 'components/custom-button';
 import { PATH } from 'enums/pathes';
 
 export const PageNotFound = () => (
@@ -16,9 +17,7 @@ export const PageNotFound = () => (
       lost in space you have reached the edge of the universe
     </div>
     <NavLink to={PATH.LOGIN_PAGE}>
-      <button type="button" className={s.btn}>
-        Back to home
-      </button>
+      <CustomButton title="Back" onClick={() => {}} />
     </NavLink>
   </div>
 );

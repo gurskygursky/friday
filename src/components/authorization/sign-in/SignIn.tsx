@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import s from 'components/authorization/sign-in/SignIn.module.css';
-import { CustomButton } from 'components/custom-button/CustomButton';
+import { CustomButton } from 'components/custom-button';
 import { PATH } from 'enums/pathes';
 
 export const SignIn = () => (
