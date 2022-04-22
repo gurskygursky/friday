@@ -12,7 +12,7 @@ import { Profile } from 'components/profile/Profile';
 import { PATH } from 'enums/pathes';
 
 const App = () => (
-  <div>
+  <div className="container">
     <Routes>
       <Route path={PATH.PAGE_NOT_FOUND} element={<PageNotFound />} />
       <Route path={PATH.REGISTRATION_PAGE} element={<SignUp />} />
