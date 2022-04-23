@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { memo } from 'react';
+import React, { ChangeEvent, memo } from 'react';
 
 import s from 'components/authorization/sign-in/SignIn.module.css';
 
@@ -9,7 +8,7 @@ type PropsType = {
   name?: string;
   className?: string;
   value: string;
-  onChange: () => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const CustomInput = memo((props: PropsType) => {
