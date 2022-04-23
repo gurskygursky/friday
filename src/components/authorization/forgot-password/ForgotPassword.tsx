@@ -1,23 +1,23 @@
 import React from 'react';
 
 import s from 'components/authorization/forgot-password/ForgotPassword.module.css';
+import { CustomButton } from 'components/custom-button';
 
 export const ForgotPassword = () => (
   <div className={s.box}>
     <span className={s.textCenter}>Create New Password</span>
     <div className={s.inputContainer}>
-      <label htmlFor="inputPassword" className={s.label}>
+      <label htmlFor="newPassword" className={s.label}>
         <input
+          size={40}
           type="password"
-          id="inputPassword"
+          id="newPassword"
           placeholder="Password"
           required
           autoComplete="off"
         />
       </label>
     </div>
-    <button type="button" className={s.btn}>
-      Confirm
-    </button>
+    <CustomButton title="Confirm" onClick={() => {}} />
   </div>
 );
