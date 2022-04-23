@@ -33,10 +33,10 @@ export const SignUp = () => (
         </label>
       </div>
       <div className={s.inputContainer}>
-        <label htmlFor="inputPassword" className={s.label}>
+        <label htmlFor="confirmPassoword" className={s.label}>
           <input
             type="password"
-            id="inputPassword"
+            id="confirmPassoword"
             placeholder="Confirm password"
             required
             autoComplete="off"
