@@ -78,6 +78,12 @@ body {
     height: 0;
     width: 0;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 500s ease-in-out 0s;
+}
 
 /* Create a custom checkbox */
 .checkmark {
