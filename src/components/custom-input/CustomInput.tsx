@@ -23,7 +23,6 @@ export const CustomInput = memo((props: PropsType) => {
           className={className}
           value={value}
           onChange={onChange}
-          autoComplete="off"
         />
       </label>
     </div>

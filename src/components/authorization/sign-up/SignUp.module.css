@@ -57,7 +57,12 @@ body {
     top: -12px;
     font-size: 12px;
 }
-
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 500s ease-in-out 0s;
+}
 /* Customize the label (the container) */
 .container {
     display: block;
