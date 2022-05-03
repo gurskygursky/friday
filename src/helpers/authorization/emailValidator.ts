@@ -1,3 +1,5 @@
-const reg = /^[\w][\w-]*@[\w-]+\.[a-z]{2,7}$/i;
-
-export const emailValidator = (email: string): boolean => true; // true - valid
+export const isEmailValid = (email: string): boolean => {
+  const EMAIL_REG =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return EMAIL_REG.test(email);
+};
