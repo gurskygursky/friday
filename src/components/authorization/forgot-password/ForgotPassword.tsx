@@ -1,40 +1,38 @@
 import React, { ChangeEvent } from 'react';
 
+import { NavLink } from 'react-router-dom';
+
 import s from 'components/authorization/forgot-password/ForgotPassword.module.css';
 import { CustomButton } from 'components/custom-button';
 import { CustomInput } from 'components/custom-input';
+import { PATH } from 'enums/pathes';
 
 type PropsType = {
-  password: string;
-  handlePassword: (event: ChangeEvent<HTMLInputElement>) => void;
+  email: string;
+  handleEmail: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const ForgotPassword = (props: PropsType) => {
-  const { password, handlePassword } = props;
+  const { email, handleEmail } = props;
+
+  const onSendButtonClick = () => {};
 
   return (
     <div className={s.box}>
-      <span className={s.textCenter}>Create New Password</span>
+      <span className={s.textCenter}>Forgot your password?</span>
       <div className={s.inputContainer}>
         <CustomInput
-          placeholder="Password"
-          type="password"
-          value={password}
-          onChange={handlePassword}
+          placeholder="Email"
+          type="text"
+          value={email}
+          onChange={handleEmail}
         />
-        <span>{password}</span>
-        {/* <label htmlFor="newPassword" className={s.label}> */}
-        {/*  <input */}
-        {/*    size={40} */}
-        {/*    type="password" */}
-        {/*    id="newPassword" */}
-        {/*    placeholder="Password" */}
-        {/*    required */}
-        {/*    autoComplete="off" */}
-        {/*  /> */}
-        {/* </label> */}
       </div>
-      <CustomButton title="Confirm" onClick={() => {}} />
+      <p> Enter your email and we will send you further instructions</p>
+      <CustomButton title="Send" onClick={onSendButtonClick} />
+      <NavLink to={PATH.LOGIN_PAGE}>
+        <p>Try logging in </p>
+      </NavLink>
     </div>
   );
 };
