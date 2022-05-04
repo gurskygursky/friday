@@ -1,4 +1,3 @@
-// export {};
 import React from 'react';
 
 import { ForgotPassword } from 'components/authorization/forgot-password/ForgotPassword';
@@ -8,7 +7,7 @@ export const ForgotPasswordContainer = () => {
   const { inputValues: email, handleValueOnChange: handleEmail } = InputHook('');
 
   return (
-    // redirect logic
+    // redirect
 
     <ForgotPassword email={email} handleEmail={handleEmail} />
   );
