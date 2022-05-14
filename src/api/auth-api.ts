@@ -1,7 +1,14 @@
-// import { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 
-// import { instance } from './apiConfig';
+import { instance } from './api-config';
 
-export const authAPI = {};
+export type RegisterParamsType = {
+  email: string;
+  password: string;
+};
 
-export const profileAPI = {};
+export const authAPI = {
+  registration(params: RegisterParamsType) {
+    return instance.post<AxiosResponse>(`auth/register`, params);
+  },
+};
