@@ -19,6 +19,8 @@ const rootReducer = combineReducers({
 // applyMiddleware supercharges createStore with middleware:
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 
+export type RootStoreType = ReturnType<typeof rootReducer>;
+
 // а это, чтобы можно было в консоли браузера обращаться к store в любой момент
 // @ts-ignore
 window.store = store;
