@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { combineReducers, applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 import {
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   cards: cardsReducer,
 });
 // applyMiddleware supercharges createStore with middleware:
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+export const store = createStore(rootReducer, undefined, applyMiddleware(thunk));
 
 export type RootStoreType = ReturnType<typeof rootReducer>;
 

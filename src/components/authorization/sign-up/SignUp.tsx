@@ -1,6 +1,7 @@
 import React from 'react';
 
 // import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import s from 'components/authorization/sign-up/SignUp.module.css';
@@ -10,11 +11,11 @@ import { InputHook } from 'components/hooks/input-hook/Input';
 import { PATH } from 'enums/pathes';
 import { isEmailValid } from 'helpers/authorization/emailValidator';
 import { isPasswordValid } from 'helpers/authorization/passwordValidator';
-// import { signUpTC } from 'store/reducers/signUp-reducer';
+import { signUpTC } from 'store/reducers/signUp-reducer';
 // import { RootStoreType } from 'store/store';
 
 export const SignUp = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const isFetching = useSelector<RootStoreType, boolean>(
   //   state => state.signUp.isFetching,
   // );
@@ -35,7 +36,7 @@ export const SignUp = () => {
     handleResetValueOnChange: resetConfirmPassword,
   } = InputHook('');
 
-  // const data = { email, password };
+  const data = { email, password };
 
   const onSubmit = (): void => {
     if (
@@ -49,7 +50,8 @@ export const SignUp = () => {
     }
   };
   if (isPasswordValid(password) && isEmailValid(email)) {
-    // dispatch(signUpTC(data));
+    // @ts-ignore
+    dispatch(signUpTC(data));
     resetPassword();
     resetEmail();
     resetConfirmPassword();
