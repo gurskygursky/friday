@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, NavLink } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import s from 'components/authorization/sign-up/SignUp.module.css';
 import { CustomButton } from 'components/custom-button';
@@ -10,15 +10,15 @@ import { InputHook } from 'components/hooks/input-hook/Input';
 import { PATH } from 'enums/pathes';
 import { isEmailValid } from 'helpers/authorization/emailValidator';
 import { isPasswordValid } from 'helpers/authorization/passwordValidator';
-import { signUpTC } from 'store/reducers/signUp-reducer';
-import { RootStoreType } from 'store/store';
+// import { signUpTC } from 'store/reducers/signUp-reducer';
+// import { RootStoreType } from 'store/store';
 
 export const SignUp = () => {
-  const dispatch = useDispatch();
-  const isFetching = useSelector<RootStoreType, boolean>(
-    state => state.signUp.isFetching,
-  );
-  const isSignUp = useSelector<RootStoreType, boolean>(state => state.signUp.isSignUp);
+  // const dispatch = useDispatch();
+  // const isFetching = useSelector<RootStoreType, boolean>(
+  //   state => state.signUp.isFetching,
+  // );
+  // const isSignUp = useSelector<RootStoreType, boolean>(state => state.signUp.isSignUp);
   const {
     inputValues: email,
     handleValueOnChange: handleEmail,
@@ -35,7 +35,7 @@ export const SignUp = () => {
     handleResetValueOnChange: resetConfirmPassword,
   } = InputHook('');
 
-  const data = { email, password };
+  // const data = { email, password };
 
   const onSubmit = (): void => {
     if (
@@ -49,15 +49,14 @@ export const SignUp = () => {
     }
   };
   if (isPasswordValid(password) && isEmailValid(email)) {
-    // @ts-ignore
-    dispatch(signUpTC(data));
+    // dispatch(signUpTC(data));
     resetPassword();
     resetEmail();
     resetConfirmPassword();
   }
-  if (isSignUp) {
-    return <Navigate to={PATH.LOGIN_PAGE} />;
-  }
+  // if (isSignUp) {
+  //   return <Navigate to={PATH.LOGIN_PAGE} />;
+  // }
 
   return (
     <div className={s.box}>
@@ -86,7 +85,7 @@ export const SignUp = () => {
       <NavLink to={PATH.LOGIN_PAGE}>
         <CustomButton title="Cancel" onClick={() => {}} />
       </NavLink>
-      <CustomButton title="Sign Up" onClick={onSubmit} disabled={isFetching} />
+      <CustomButton title="Sign Up" onClick={onSubmit} />
     </div>
   );
 };
