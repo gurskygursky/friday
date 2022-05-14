@@ -10,6 +10,7 @@ import { InputHook } from 'components/hooks/input-hook/Input';
 import { PATH } from 'enums/pathes';
 import { isEmailValid } from 'helpers/authorization/emailValidator';
 import { isPasswordValid } from 'helpers/authorization/passwordValidator';
+import { signUpTC } from 'store/reducers/signUp-reducer';
 import { RootStoreType } from 'store/store';
 
 export const SignUp = () => {
@@ -34,7 +35,7 @@ export const SignUp = () => {
     handleResetValueOnChange: resetConfirmPassword,
   } = InputHook('');
 
-  const RegisterData = { email, password, confirmPassword };
+  const data = { email, password };
 
   const onSubmit = (): void => {
     if (
@@ -48,7 +49,8 @@ export const SignUp = () => {
     }
   };
   if (isPasswordValid(password) && isEmailValid(email)) {
-    dispatch(signUpTC(RegisterData));
+    // @ts-ignore
+    dispatch(signUpTC(data));
     resetPassword();
     resetEmail();
     resetConfirmPassword();
