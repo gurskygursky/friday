@@ -1,5 +1,5 @@
 import { combineReducers, applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
+import thunk, { ThunkDispatch } from 'redux-thunk';
 
 import {
   appReducer,
@@ -8,6 +8,7 @@ import {
   signInReducer,
   signUpReducer,
 } from 'store/reducers';
+import { ActionsSignIn } from 'store/reducers/signIn-reducer';
 
 const rootReducer = combineReducers({
   app: appReducer,
@@ -17,9 +18,12 @@ const rootReducer = combineReducers({
   cards: cardsReducer,
 });
 // applyMiddleware supercharges createStore with middleware:
-export const store = createStore(rootReducer, undefined, applyMiddleware(thunk));
+export const store = createStore(rootReducer, applyMiddleware(thunk));
 
-export type RootStoreType = ReturnType<typeof rootReducer>;
+type AppState = ReturnType<typeof rootReducer>;
+type AppActions = ActionsSignIn;
+type AppDispatch = ThunkDispatch<AppState, any, AppActions>;
+export type { AppState, AppDispatch, AppActions };
 
 // а это, чтобы можно было в консоли браузера обращаться к store в любой момент
 // @ts-ignore
