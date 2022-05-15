@@ -53,7 +53,7 @@ export const SignIn = () => {
         placeholder="Email"
         onChange={handleEmail}
         value={email}
-        type="email"
+        type="text"
         name="email"
       />
       <CustomInput

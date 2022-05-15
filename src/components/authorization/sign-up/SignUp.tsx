@@ -38,7 +38,7 @@ export const SignUp = () => {
 
   const data = { email, password };
 
-  const onSubmit = (): void => {
+  const onSubmit = () => {
     if (
       password !== confirmPassword ||
       password === null ||
@@ -64,7 +64,7 @@ export const SignUp = () => {
         placeholder="Email"
         onChange={handleEmail}
         value={email}
-        type="email"
+        type="text"
         name="email"
       />
       <CustomInput

@@ -8,20 +8,20 @@ import { ACTIONS_TYPE } from 'enums/actions';
 import { requestStatus } from 'enums/request';
 import { RootStoreType } from 'store/store';
 
-export type InitialStateDataType = {
+export type InitialStateType = {
   isAuth: boolean;
   error?: Nullable<string>;
 };
 
-export const initialState: InitialStateDataType = {
+export const initialState: InitialStateType = {
   isAuth: false,
   error: null,
 };
 
 export const signInReducer = (
-  state: InitialStateDataType = initialState,
+  state: InitialStateType = initialState,
   action: ActionTypesSignIn,
-): InitialStateDataType => {
+): InitialStateType => {
   switch (action.type) {
     case ACTIONS_TYPE.SET_AUTH_SIGN_IN_DATA:
       return {
@@ -58,7 +58,6 @@ export const SignInTC =
       .login(data)
       .then(() => {
         dispatch(setAuthSignInDataAC(true));
-        // dispatch(setUserProfile(res.data));
         dispatch(setAppStatusAC(requestStatus.succeeded));
       })
       .catch(() => {})
