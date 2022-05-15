@@ -15,16 +15,7 @@ type PropsType = {
 export const ForgotPassword = (props: PropsType) => {
   const { email, handleEmail } = props;
 
-  // const dataPayload: AddNewPasswordType = {
-  //   email: 'nya@nya.nya', // кому восстанавливать пароль
-  //   from: 'test-front-admin <ai73a@yandex.by>', // можно указать разработчика фронта)
-  //   message: `<div style="background-color: lime; padding: 15px">
-  // password recovery link:
-  // <a href='http://gurskygursky.github.io/friday/#/set-new-password/$token$'>
-  // link</a></div>`, // хтмп-письмо, вместо $token$ бэк вставит токен
-  // };
-
-  const onSendButtonClick = () => {};
+  const onSubmit = () => {};
 
   return (
     <div className={s.box}>
@@ -38,7 +29,7 @@ export const ForgotPassword = (props: PropsType) => {
         />
       </div>
       <p> Enter your email and we will send you further instructions</p>
-      <CustomButton title="Send" onClick={onSendButtonClick} />
+      <CustomButton title="Send" onClick={onSubmit} />
       <NavLink to={PATH.LOGIN_PAGE}>
         <p>Try logging in </p>
       </NavLink>

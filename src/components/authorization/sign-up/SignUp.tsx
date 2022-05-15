@@ -56,9 +56,6 @@ export const SignUp = () => {
     resetEmail();
     resetConfirmPassword();
   }
-  // if (isSignUp) {
-  //   return <Navigate to={PATH.LOGIN_PAGE} />;
-  // }
 
   return (
     <div className={s.box}>
