@@ -1,5 +1,3 @@
-import { Action } from 'redux';
-
 export enum ACTIONS_TYPE {
   IS_FETCHING = 'SignUp/IS_FETCHING',
   IS_SIGNUP_SUCCESSFUL = 'SignUp/IS_SIGNUP_SUCCESSFUL',

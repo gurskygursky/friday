@@ -16,6 +16,7 @@ import { SignInTC } from 'store/reducers/signIn-reducer';
 
 export const SignIn = () => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
+
   const {
     inputValues: email,
     handleValueOnChange: handleEmail,
@@ -33,8 +34,7 @@ export const SignIn = () => {
 
   const onSubmit = () => {
     if (validateEmail(email) && validatePassword(password)) {
-      // @ts-ignore
-      dispatch(SignInTC({ email, password, rememberMe }));
+      dispatch(SignInTC({ email, password, rememberMe }) as any);
       resetEmail();
       resetPassword();
       dispatch(setAppStatusAC(requestStatus.succeeded));

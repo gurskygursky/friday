@@ -50,8 +50,7 @@ export const SignUp = () => {
     }
   };
   if (validatePassword(password) && validateEmail(email)) {
-    // @ts-ignore
-    dispatch(signUpTC(data));
+    dispatch(signUpTC(data) as any);
     resetPassword();
     resetEmail();
     resetConfirmPassword();
