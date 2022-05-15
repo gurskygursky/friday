@@ -27,18 +27,21 @@ export const SignIn = () => {
   } = InputHook('');
   const dispatch = useDispatch();
 
-  const data = { email, password, rememberMe };
-
   const onChangeCheckbox = (e: ChangeEvent<HTMLInputElement>): void =>
     handleRememberMe(e.currentTarget.checked);
 
-  const onSubmit = (): void => {
+  const onSubmit = () => {
     if (isEmailValid(email) && isPasswordValid(password)) {
-      dispatch(loginTC({ data }));
+      // dispatch(SignInTC({ email, password, rememberMe }));
       resetEmail();
       resetPassword();
       dispatch(setAppStatusAC(requestStatus.succeeded));
     }
+  };
+  const onClickCancel = () => {
+    resetEmail();
+    resetPassword();
+    dispatch(setAppStatusAC(requestStatus.idle));
   };
 
   return (
@@ -51,22 +54,6 @@ export const SignIn = () => {
         type="email"
         name="email"
       />
-      {/* <div className={s.inputContainer}> */}
-      {/*  <label htmlFor="inputEmail" className={s.label}> */}
-      {/*    <input size={40} type="email" id="inputEmail" placeholder="Email" required /> */}
-      {/*  </label> */}
-      {/* </div> */}
-      {/* <div className={s.inputContainer}> */}
-      {/*  <label htmlFor="inputPassword" className={s.label}> */}
-      {/*    <input */}
-      {/*      size={40} */}
-      {/*      type="password" */}
-      {/*      id="inputPassword" */}
-      {/*      placeholder="Password" */}
-      {/*      required */}
-      {/*    /> */}
-      {/*  </label> */}
-      {/* </div> */}
       <CustomInput
         placeholder="Password"
         onChange={handlePassword}
@@ -74,29 +61,23 @@ export const SignIn = () => {
         type="password"
         name="password"
       />
-      <CustomInput
-        onChange={onChangeCheckbox}
-        checked={rememberMe}
-        type="checkbox"
-        name="checkbox"
-      />
-      {/* <div className={s.inputContainer}> */}
-      {/*  <label className={s.container} htmlFor="inputCheckbox"> */}
-      {/*    Remember Me */}
-      {/*    <input */}
-      {/*      id="inputCheckbox" */}
-      {/*      type="checkbox" */}
-      {/*      required={false} */}
-      {/*      name="checkbox" */}
-      {/*      value={rememberMe} */}
-      {/*      onChange={onChangeCheckbox} */}
-      {/*    /> */}
-      {/*    <span className={s.checkmark} /> */}
-      {/*  </label> */}
-      {/* </div> */}
+      <div className={s.inputContainer}>
+        <label className={s.container} htmlFor="inputCheckbox">
+          Remember Me
+          <input
+            id="inputCheckbox"
+            type="checkbox"
+            required={false}
+            name="checkbox"
+            checked={rememberMe}
+            onChange={onChangeCheckbox}
+          />
+          <span className={s.checkmark} />
+        </label>
+      </div>
       <CustomButton title="Sign In" onClick={onSubmit} />
       <NavLink to={PATH.REGISTRATION_PAGE}>
-        <CustomButton title="Sign Up" onClick={() => {}} />
+        <CustomButton title="Sign Up" onClick={onClickCancel} />
       </NavLink>
     </div>
   );
