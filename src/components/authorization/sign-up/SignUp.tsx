@@ -9,8 +9,8 @@ import { CustomButton } from 'components/custom-button';
 import { CustomInput } from 'components/custom-input';
 import { InputHook } from 'components/hooks/input-hook/Input';
 import { PATH } from 'enums/pathes';
-import { isEmailValid } from 'helpers/authorization/emailValidator';
-import { isPasswordValid } from 'helpers/authorization/passwordValidator';
+import { validateEmail } from 'helpers/authorization/emailValidator';
+import { validatePassword } from 'helpers/authorization/passwordValidator';
 import { signUpTC } from 'store/reducers/signUp-reducer';
 // import { RootStoreType } from 'store/store';
 
@@ -43,13 +43,13 @@ export const SignUp = () => {
       password !== confirmPassword ||
       password === null ||
       confirmPassword === null ||
-      !isPasswordValid(password) ||
-      !isEmailValid(email)
+      !validatePassword(password) ||
+      !validateEmail(email)
     ) {
       console.error('error');
     }
   };
-  if (isPasswordValid(password) && isEmailValid(email)) {
+  if (validatePassword(password) && validateEmail(email)) {
     // @ts-ignore
     dispatch(signUpTC(data));
     resetPassword();

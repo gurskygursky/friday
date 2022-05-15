@@ -9,12 +9,13 @@ import { CustomInput } from 'components/custom-input';
 import { InputHook } from 'components/hooks/input-hook/Input';
 import { PATH } from 'enums/pathes';
 import { requestStatus } from 'enums/request';
-import { isEmailValid } from 'helpers/authorization/emailValidator';
-import { isPasswordValid } from 'helpers/authorization/passwordValidator';
+import { validateEmail } from 'helpers/authorization/emailValidator';
+import { validatePassword } from 'helpers/authorization/passwordValidator';
 import { setAppStatusAC } from 'store/reducers/app-reducer';
+import { SignInTC } from 'store/reducers/signIn-reducer';
 
 export const SignIn = () => {
-  const [rememberMe, handleRememberMe] = useState<boolean>(false);
+  const [rememberMe, setRememberMe] = useState<boolean>(false);
   const {
     inputValues: email,
     handleValueOnChange: handleEmail,
@@ -27,12 +28,13 @@ export const SignIn = () => {
   } = InputHook('');
   const dispatch = useDispatch();
 
-  const onChangeCheckbox = (e: ChangeEvent<HTMLInputElement>): void =>
-    handleRememberMe(e.currentTarget.checked);
+  const onChangeCheckbox = (e: ChangeEvent<HTMLInputElement>) =>
+    setRememberMe(e.currentTarget.checked);
 
   const onSubmit = () => {
-    if (isEmailValid(email) && isPasswordValid(password)) {
-      // dispatch(SignInTC({ email, password, rememberMe }));
+    if (validateEmail(email) && validatePassword(password)) {
+      // @ts-ignore
+      dispatch(SignInTC({ email, password, rememberMe }));
       resetEmail();
       resetPassword();
       dispatch(setAppStatusAC(requestStatus.succeeded));
