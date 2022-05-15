@@ -14,12 +14,12 @@ const initialState = {
 
 export const toggleIsFetchingAC = (isFetching: boolean) =>
   ({
-    type: ACTIONS_TYPE.REGISTRATION_IS_FETCHING,
+    type: ACTIONS_TYPE.IS_FETCHING,
     isFetching,
   } as const);
 export const toggleIsSignUpAC = (isSignUpSuccessful: boolean) =>
   ({
-    type: ACTIONS_TYPE.REGISTRATION_IS_SIGNUP_SUCCESSFUL,
+    type: ACTIONS_TYPE.IS_SIGNUP_SUCCESSFUL,
     isSignUpSuccessful,
   } as const);
 export const setErrorAC = (error: null | string) =>
@@ -30,12 +30,12 @@ export const signUpReducer = (
   action: SignUpActionTypes,
 ): InitialStateType => {
   switch (action.type) {
-    case ACTIONS_TYPE.REGISTRATION_IS_FETCHING:
+    case ACTIONS_TYPE.IS_FETCHING:
       return {
         ...state,
         isFetching: action.isFetching,
       };
-    case ACTIONS_TYPE.REGISTRATION_IS_SIGNUP_SUCCESSFUL:
+    case ACTIONS_TYPE.IS_SIGNUP_SUCCESSFUL:
       return {
         ...state,
         isSignUp: action.isSignUpSuccessful,
