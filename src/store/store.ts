@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { combineReducers, applyMiddleware, createStore } from 'redux';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 
@@ -19,6 +20,8 @@ const rootReducer = combineReducers({
 });
 // applyMiddleware supercharges createStore with middleware:
 export const store = createStore(rootReducer, applyMiddleware(thunk));
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 type AppState = ReturnType<typeof rootReducer>;
 type AppActions = ActionsSignIn;

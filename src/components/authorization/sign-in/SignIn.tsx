@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
 
-import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import s from 'components/authorization/sign-in/SignIn.module.css';
@@ -13,6 +12,7 @@ import { validateEmail } from 'helpers/authorization/emailValidator';
 import { validatePassword } from 'helpers/authorization/passwordValidator';
 import { setAppStatusAC } from 'store/reducers/app-reducer';
 import { SignInTC } from 'store/reducers/signIn-reducer';
+import { useAppDispatch } from 'store/store';
 
 export const SignIn = () => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
@@ -27,14 +27,16 @@ export const SignIn = () => {
     handleValueOnChange: handlePassword,
     handleResetValueOnChange: resetPassword,
   } = InputHook('');
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onChangeCheckbox = (e: ChangeEvent<HTMLInputElement>) =>
     setRememberMe(e.currentTarget.checked);
 
+  const data = { email, password, rememberMe };
+
   const onSubmit = () => {
     if (validateEmail(email) && validatePassword(password)) {
-      dispatch(SignInTC({ email, password, rememberMe }) as any);
+      dispatch(SignInTC(data));
       resetEmail();
       resetPassword();
       dispatch(setAppStatusAC(requestStatus.succeeded));

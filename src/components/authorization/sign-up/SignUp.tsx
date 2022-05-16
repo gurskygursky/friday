@@ -1,7 +1,6 @@
 import React from 'react';
 
 // import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import s from 'components/authorization/sign-up/SignUp.module.css';
@@ -12,10 +11,11 @@ import { PATH } from 'enums/pathes';
 import { validateEmail } from 'helpers/authorization/emailValidator';
 import { validatePassword } from 'helpers/authorization/passwordValidator';
 import { signUpTC } from 'store/reducers/signUp-reducer';
+import { useAppDispatch } from 'store/store';
 // import { RootStoreType } from 'store/store';
 
 export const SignUp = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   // const isFetching = useSelector<RootStoreType, boolean>(
   //   state => state.signUp.isFetching,
   // );
@@ -50,7 +50,7 @@ export const SignUp = () => {
     }
   };
   if (validatePassword(password) && validateEmail(email)) {
-    dispatch(signUpTC(data) as any);
+    dispatch(signUpTC(data));
     resetPassword();
     resetEmail();
     resetConfirmPassword();
