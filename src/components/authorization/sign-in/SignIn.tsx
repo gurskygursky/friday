@@ -102,10 +102,23 @@ export const SignIn = () => {
           <span className={s.checkmark} />
         </label>
       </div>
-      <CustomButton title="Sign In" onClick={onSubmit} />
-      <NavLink to={PATH.REGISTRATION_PAGE}>
-        <CustomButton title="Sign Up" onClick={onClickCancel} />
-      </NavLink>
+      <div className={s.btn}>
+        <CustomButton title="Sign In" onClick={onSubmit} />
+      </div>
+      <div className={s.link}>
+        <p>
+          {' '}
+          Do not have an account?{' '}
+          <NavLink to={PATH.REGISTRATION_PAGE} onClick={onClickCancel}>
+            Sign Up
+          </NavLink>{' '}
+        </p>
+      </div>
+      <div className={s.link}>
+        <NavLink to={PATH.FORGOT_PASSWORD_PAGE} onClick={onClickCancel}>
+          Forgot Password
+        </NavLink>
+      </div>
     </div>
   );
 };

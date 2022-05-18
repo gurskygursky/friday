@@ -8,6 +8,7 @@ body {
     font-family: 'Helvetica', sans-serif;
 
 }
+
 .textCenter {
     color: #fff;
     text-transform: uppercase;
@@ -16,6 +17,7 @@ body {
     display: block;
     text-align: center;
 }
+
 .box {
     position: absolute;
     left: 50%;
@@ -23,14 +25,16 @@ body {
     height: 300px;
     width: 300px;
     transform: translate(-50%, -50%);
-    background-color: rgba(26,24,29, 0.7);
-    border-radius:3px;
-    padding:70px 100px;
+    background-color: rgba(26, 24, 29, 0.7);
+    border-radius: 3px;
+    padding: 70px 100px;
 }
+
 .inputContainer {
     position: relative;
     margin-bottom: 25px;
 }
+
 .label input {
     width: 100%;
     border: 0;
@@ -78,6 +82,7 @@ body {
     height: 0;
     width: 0;
 }
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
@@ -128,4 +133,23 @@ input:-webkit-autofill:focus {
     /*-webkit-transform: rotate(45deg);*/
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.link p {
+    color: white;
+}
+
+.link a:link {
+    color: #ffba12;
+    text-decoration: none;
+}
+.link a:visited {
+    color: dodgerblue;
+    text-decoration: underline;
+}
+
+.btn {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
