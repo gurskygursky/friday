@@ -1,21 +1,30 @@
 import React, { ChangeEvent, useState } from 'react';
 
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import s from 'components/authorization/sign-in/SignIn.module.css';
 import { CustomButton } from 'components/custom-button';
 import { CustomInput } from 'components/custom-input';
 import { InputHook } from 'components/hooks/input-hook/Input';
+import { Nullable } from 'components/types';
 import { PATH } from 'enums/pathes';
 import { requestStatus } from 'enums/request';
 import { validateEmail } from 'helpers/authorization/emailValidator';
 import { validatePassword } from 'helpers/authorization/passwordValidator';
 import { setAppStatusAC } from 'store/reducers/app-reducer';
+import { setServerErrorAC } from 'store/reducers/errors-reducer';
 import { SignInTC } from 'store/reducers/signIn-reducer';
-import { useAppDispatch } from 'store/store';
+import { AppState, useAppDispatch } from 'store/store';
 
 export const SignIn = () => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
+  const serverError = useSelector<AppState, Nullable<string> | undefined>(
+    state => state.errors.serverError,
+  );
+  const networkError = useSelector<AppState, Nullable<string> | undefined>(
+    state => state.errors.networkError,
+  );
 
   const {
     inputValues: email,
@@ -41,6 +50,9 @@ export const SignIn = () => {
       resetPassword();
       dispatch(setAppStatusAC(requestStatus.succeeded));
     }
+    if (!validateEmail(email) || !validatePassword(password)) {
+      dispatch(setServerErrorAC('Invalid data'));
+    }
   };
   const onClickCancel = () => {
     resetEmail();
@@ -51,6 +63,8 @@ export const SignIn = () => {
   return (
     <div className={s.box}>
       <span className={s.textCenter}>login</span>
+      {serverError && <span style={{ color: 'red' }}>{serverError}</span>}
+      {networkError && <span style={{ color: 'red' }}>{networkError}</span>}
       <CustomInput
         placeholder="Email"
         onChange={handleEmail}

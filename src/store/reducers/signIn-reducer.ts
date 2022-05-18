@@ -4,6 +4,7 @@ import { authAPI, LoginParamsType } from 'api/auth-api';
 import { Nullable } from 'components/types';
 import { ACTIONS_TYPE } from 'enums/actions';
 import { requestStatus } from 'enums/request';
+import { setNetworkErrorAC } from 'store/reducers/errors-reducer';
 import { AppDispatch } from 'store/store';
 
 export type InitialStateType = {
@@ -47,7 +48,13 @@ export const SignInTC = (data: LoginParamsType) => (dispatch: AppDispatch) => {
       dispatch(setAuthSignInDataAC(true));
       dispatch(setAppStatusAC(requestStatus.succeeded));
     })
-    .catch(() => {})
+    .catch(e => {
+      dispatch(setAppStatusAC(requestStatus.succeeded));
+      const networkError = e.response
+        ? e.response.data.error
+        : `${e.message}, more details in the console`;
+      dispatch(setNetworkErrorAC(networkError));
+    })
     .finally(() => {
       dispatch(setAppStatusAC(requestStatus.idle));
     });
