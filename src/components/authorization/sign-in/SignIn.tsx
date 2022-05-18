@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 
 import s from 'components/authorization/sign-in/SignIn.module.css';
 import { CustomButton } from 'components/custom-button';
@@ -25,6 +25,7 @@ export const SignIn = () => {
   const networkError = useSelector<AppState, Nullable<string> | undefined>(
     state => state.errors.networkError,
   );
+  const isAuth = useSelector<AppState, boolean>(state => state.signIn.isAuth);
 
   const {
     inputValues: email,
@@ -42,6 +43,7 @@ export const SignIn = () => {
     setRememberMe(e.currentTarget.checked);
 
   const data = { email, password, rememberMe };
+  const delay = 3000;
 
   const onSubmit = () => {
     if (validateEmail(email) && validatePassword(password)) {
@@ -52,6 +54,9 @@ export const SignIn = () => {
     }
     if (!validateEmail(email) || !validatePassword(password)) {
       dispatch(setServerErrorAC('Invalid data'));
+      setTimeout(() => {
+        dispatch(setServerErrorAC(''));
+      }, delay);
     }
   };
   const onClickCancel = () => {
@@ -59,6 +64,10 @@ export const SignIn = () => {
     resetPassword();
     dispatch(setAppStatusAC(requestStatus.idle));
   };
+
+  if (isAuth) {
+    return <Navigate to={PATH.PROFILE_PAGE} />;
+  }
 
   return (
     <div className={s.box}>
