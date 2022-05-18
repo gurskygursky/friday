@@ -10,7 +10,7 @@ export const initialState: InitialStateType = {
 
 export const appReducer = (
   state: InitialStateType = initialState,
-  action: AppActionTypes,
+  action: ActionsApp,
 ): InitialStateType => {
   switch (action.type) {
     case ACTIONS_TYPE.SET_APP_STATUS:
@@ -28,9 +28,9 @@ export const appReducer = (
 
 export const setAppStatusAC = (status: RequestStatusType) =>
   ({ type: ACTIONS_TYPE.SET_APP_STATUS, status } as const);
-export const setErrorAC = (error: string) =>
+export const setAppErrorAC = (error: Nullable<string>) =>
   ({ type: ACTIONS_TYPE.SET_APP_ERROR, error } as const);
-export const setInitializedAC = (isInitialized: boolean) =>
+export const setAppInitializedAC = (isInitialized: boolean) =>
   ({ type: ACTIONS_TYPE.APP_IS_INITIALIZED, isInitialized } as const);
 
 // types
@@ -40,9 +40,8 @@ export type InitialStateType = {
   error: Nullable<string>;
   isInitialized: boolean;
 };
-export type SetAppStatusActionType = ReturnType<typeof setAppStatusAC>;
 
-export type AppActionTypes =
+export type ActionsApp =
   | ReturnType<typeof setAppStatusAC>
-  | ReturnType<typeof setErrorAC>
-  | ReturnType<typeof setInitializedAC>;
+  | ReturnType<typeof setAppErrorAC>
+  | ReturnType<typeof setAppInitializedAC>;

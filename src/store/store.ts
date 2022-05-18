@@ -9,6 +9,7 @@ import {
   signInReducer,
   signUpReducer,
 } from 'store/reducers';
+import { ActionsApp } from 'store/reducers/app-reducer';
 import { ActionsSignIn } from 'store/reducers/signIn-reducer';
 
 const rootReducer = combineReducers({
@@ -24,7 +25,7 @@ export const store = createStore(rootReducer, applyMiddleware(thunk));
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 type AppState = ReturnType<typeof rootReducer>;
-type AppActions = ActionsSignIn;
+type AppActions = ActionsSignIn | ActionsApp;
 type AppDispatch = ThunkDispatch<AppState, any, AppActions>;
 export type { AppState, AppDispatch, AppActions };
 
