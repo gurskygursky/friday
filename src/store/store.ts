@@ -5,6 +5,7 @@ import thunk, { ThunkDispatch } from 'redux-thunk';
 import {
   appReducer,
   cardsReducer,
+  errorsReducer,
   profileReducer,
   signInReducer,
   signUpReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   signUp: signUpReducer,
   profilePage: profileReducer,
   cards: cardsReducer,
+  errors: errorsReducer,
 });
 // applyMiddleware supercharges createStore with middleware:
 export const store = createStore(rootReducer, applyMiddleware(thunk));
