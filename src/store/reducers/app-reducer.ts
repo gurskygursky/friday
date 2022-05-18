@@ -1,18 +1,5 @@
-// const initialState = {};
-//
-// // Use the initialState as a default value
-// export const appReducer = (state = initialState, action: any) => {
-//   // The reducer normally looks at the action type field to decide what happens
-//   switch (action.type) {
-//     // Do something here based on the different types of actions
-//     default:
-//       // If this reducer doesn't recognize the action type, or doesn't
-//       // care about this specific action, return the existing state unchanged
-//       return state;
-//   }
-// };
-
 import { Nullable } from 'components/types';
+import { ACTIONS_TYPE } from 'enums/actions';
 import { requestStatus, RequestStatusType } from 'enums/request';
 
 export const initialState: InitialStateType = {
@@ -23,28 +10,39 @@ export const initialState: InitialStateType = {
 
 export const appReducer = (
   state: InitialStateType = initialState,
-  action: ActionTypes,
+  action: AppActionTypes,
 ): InitialStateType => {
   switch (action.type) {
-    case 'APP/SET_STATUS':
+    case ACTIONS_TYPE.SET_APP_STATUS:
       return { ...state, status: action.status };
+    case ACTIONS_TYPE.SET_APP_ERROR:
+      return { ...state, error: action.error };
+    case ACTIONS_TYPE.APP_IS_INITIALIZED:
+      return { ...state, isInitialized: action.isInitialized };
     default:
       return { ...state };
   }
 };
 
+// actions
+
 export const setAppStatusAC = (status: RequestStatusType) =>
-  ({ type: 'APP/SET_STATUS', status } as const);
+  ({ type: ACTIONS_TYPE.SET_APP_STATUS, status } as const);
+export const setErrorAC = (error: string) =>
+  ({ type: ACTIONS_TYPE.SET_APP_ERROR, error } as const);
+export const setInitializedAC = (isInitialized: boolean) =>
+  ({ type: ACTIONS_TYPE.APP_IS_INITIALIZED, isInitialized } as const);
 
 // types
 
 export type InitialStateType = {
-  // взаимодействие с сервером
   status: RequestStatusType;
-  // если ошибка
   error: Nullable<string>;
   isInitialized: boolean;
 };
 export type SetAppStatusActionType = ReturnType<typeof setAppStatusAC>;
 
-type ActionTypes = SetAppStatusActionType;
+export type AppActionTypes =
+  | ReturnType<typeof setAppStatusAC>
+  | ReturnType<typeof setErrorAC>
+  | ReturnType<typeof setInitializedAC>;
