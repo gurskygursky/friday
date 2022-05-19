@@ -1,19 +1,20 @@
 import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 import s from 'components/authorization/sign-in/SignIn.module.css';
 import { CustomButton } from 'components/custom-button';
 import { PATH } from 'enums/pathes';
-import { AppState } from 'store/store';
+import { SignOutTC } from 'store/reducers/signIn-reducer';
+import { AppState, useAppDispatch } from 'store/store';
 
 export const Profile = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const isAuth = useSelector<AppState, boolean>(state => state.signIn.isAuth);
 
   const onClickLogout = () => {
-    dispatch(LogoutTC);
+    dispatch(SignOutTC());
   };
 
   if (!isAuth) {

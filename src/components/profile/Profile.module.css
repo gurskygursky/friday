@@ -82,12 +82,6 @@ body {
     height: 0;
     width: 0;
 }
-.btn {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-}
-
 
 /* Hide autofill default input */
 input:-webkit-autofill,

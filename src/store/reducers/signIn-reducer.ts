@@ -60,6 +60,14 @@ export const SignInTC = (data: LoginParamsType) => (dispatch: AppDispatch) => {
     });
 };
 
+export const SignOutTC = () => (dispatch: AppDispatch) => {
+  dispatch(setAppStatusAC(requestStatus.loading));
+  authAPI.logout().then(() => {
+    setAuthSignInDataAC(false);
+    setAppStatusAC(requestStatus.idle);
+  });
+};
+
 // type;
 export type ActionsSignIn =
   | ReturnType<typeof setAuthSignInDataAC>
