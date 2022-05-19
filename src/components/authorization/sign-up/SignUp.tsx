@@ -6,7 +6,7 @@ import { Navigate, NavLink } from 'react-router-dom';
 import s from 'components/authorization/sign-up/SignUp.module.css';
 import { CustomButton } from 'components/custom-button';
 import { CustomInput } from 'components/custom-input';
-import { InputHook } from 'components/hooks/input-hook/Input';
+import { InputHook } from 'components/hooks/input-hook/InputHook';
 import { Nullable } from 'components/types';
 import { PATH } from 'enums/pathes';
 import { requestStatus } from 'enums/request';
@@ -28,19 +28,19 @@ export const SignUp = () => {
     state => state.errors.networkError,
   );
   const {
-    inputValues: email,
-    handleValueOnChange: handleEmail,
-    handleResetValueOnChange: resetEmail,
+    inputValue: email,
+    handleInputValue: handleEmail,
+    resetInputValue: resetEmail,
   } = InputHook('');
   const {
-    inputValues: password,
-    handleValueOnChange: handlePassword,
-    handleResetValueOnChange: resetPassword,
+    inputValue: password,
+    handleInputValue: handlePassword,
+    resetInputValue: resetPassword,
   } = InputHook('');
   const {
-    inputValues: confirmPassword,
-    handleValueOnChange: handleConfirmPassword,
-    handleResetValueOnChange: resetConfirmPassword,
+    inputValue: confirmPassword,
+    handleInputValue: handleConfirmPassword,
+    resetInputValue: resetConfirmPassword,
   } = InputHook('');
 
   const data = { email, password };

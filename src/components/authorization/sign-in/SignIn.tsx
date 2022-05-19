@@ -6,7 +6,7 @@ import { Navigate, NavLink } from 'react-router-dom';
 import s from 'components/authorization/sign-in/SignIn.module.css';
 import { CustomButton } from 'components/custom-button';
 import { CustomInput } from 'components/custom-input';
-import { InputHook } from 'components/hooks/input-hook/Input';
+import { InputHook } from 'components/hooks/input-hook/InputHook';
 import { Nullable } from 'components/types';
 import { PATH } from 'enums/pathes';
 import { requestStatus } from 'enums/request';
@@ -28,14 +28,14 @@ export const SignIn = () => {
   const isAuth = useSelector<AppState, boolean>(state => state.signIn.isAuth);
 
   const {
-    inputValues: email,
-    handleValueOnChange: handleEmail,
-    handleResetValueOnChange: resetEmail,
+    inputValue: email,
+    handleInputValue: handleEmail,
+    resetInputValue: resetEmail,
   } = InputHook('');
   const {
-    inputValues: password,
-    handleValueOnChange: handlePassword,
-    handleResetValueOnChange: resetPassword,
+    inputValue: password,
+    handleInputValue: handlePassword,
+    resetInputValue: resetPassword,
   } = InputHook('');
   const dispatch = useAppDispatch();
 
