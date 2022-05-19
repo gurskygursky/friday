@@ -12,6 +12,9 @@ export const authAPI = {
       params,
     );
   },
+  logout() {
+    return instance.delete<AxiosResponse<LoginResponseType>>(`auth/me`, {});
+  },
 };
 
 export type RegisterParamsType = {
