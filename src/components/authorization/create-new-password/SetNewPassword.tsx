@@ -3,6 +3,7 @@ import React, { ChangeEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import { SetNewPasswordType } from 'api/forgot-password-api';
 import s from 'components/authorization/forgot-password/ForgotPassword.module.css';
 import { CustomButton } from 'components/custom-button';
 import { CustomInput } from 'components/custom-input';
@@ -28,7 +29,7 @@ export const SetNewPassword = (props: PropsType) => {
   const getToken = useParams<'token'>();
   const { token } = getToken as { token: string };
 
-  const data = { password, token };
+  const data: SetNewPasswordType = { password, resetPasswordToken: token };
   const delay = 3000;
   const onSubmit = () => {
     if (validatePassword(password)) {
