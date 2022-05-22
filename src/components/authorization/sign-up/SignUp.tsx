@@ -6,12 +6,12 @@ import { Navigate, NavLink } from 'react-router-dom';
 import s from 'components/authorization/sign-up/SignUp.module.css';
 import { CustomButton } from 'components/custom-button';
 import { CustomInput } from 'components/custom-input';
-import { InputHook } from 'components/hooks/input-hook/InputHook';
 import { Nullable } from 'components/types';
 import { PATH } from 'enums/pathes';
 import { requestStatus } from 'enums/request';
 import { validateEmail } from 'helpers/authorization/emailValidator';
 import { validatePassword } from 'helpers/authorization/passwordValidator';
+import { useInput } from 'hooks';
 import { setAppStatusAC } from 'store/reducers/app-reducer';
 import { setServerErrorAC } from 'store/reducers/errors-reducer';
 import { signUpTC } from 'store/reducers/signUp-reducer';
@@ -27,21 +27,17 @@ export const SignUp = () => {
   const networkError = useSelector<AppState, Nullable<string> | undefined>(
     state => state.errors.networkError,
   );
+  const { value: email, onChange: handleEmail, clearValue: clearEmail } = useInput('');
   const {
-    inputValue: email,
-    handleInputValue: handleEmail,
-    resetInputValue: resetEmail,
-  } = InputHook('');
+    value: password,
+    onChange: handlePassword,
+    clearValue: clearPassword,
+  } = useInput('');
   const {
-    inputValue: password,
-    handleInputValue: handlePassword,
-    resetInputValue: resetPassword,
-  } = InputHook('');
-  const {
-    inputValue: confirmPassword,
-    handleInputValue: handleConfirmPassword,
-    resetInputValue: resetConfirmPassword,
-  } = InputHook('');
+    value: confirmPassword,
+    onChange: handleConfirmPassword,
+    clearValue: clearConfirmPassword,
+  } = useInput('');
 
   const data = { email, password };
 
@@ -57,16 +53,16 @@ export const SignUp = () => {
     }
   };
   const onClickCancel = () => {
-    resetEmail();
-    resetPassword();
-    resetConfirmPassword();
+    clearEmail();
+    clearPassword();
+    clearConfirmPassword();
     dispatch(setAppStatusAC(requestStatus.idle));
   };
   if (validatePassword(password) && validateEmail(email)) {
     dispatch(signUpTC(data));
-    resetPassword();
-    resetEmail();
-    resetConfirmPassword();
+    clearPassword();
+    clearEmail();
+    clearConfirmPassword();
   }
   if (isSignUp) {
     return <Navigate to={PATH.LOGIN_PAGE} />;

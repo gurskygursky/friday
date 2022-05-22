@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { ForgotPassword } from 'components/authorization/forgot-password/ForgotPassword';
-import { InputHook } from 'components/hooks/input-hook/InputHook';
+import { useInput } from 'hooks';
 
 export const ForgotPasswordContainer = () => {
-  const { inputValue: email, handleInputValue: handleEmail } = InputHook('');
+  const { value: email, onChange: handleEmail } = useInput('');
 
   return <ForgotPassword email={email} handleEmail={handleEmail} />;
 };

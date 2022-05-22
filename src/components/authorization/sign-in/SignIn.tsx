@@ -6,12 +6,12 @@ import { Navigate, NavLink } from 'react-router-dom';
 import s from 'components/authorization/sign-in/SignIn.module.css';
 import { CustomButton } from 'components/custom-button';
 import { CustomInput } from 'components/custom-input';
-import { InputHook } from 'components/hooks/input-hook/InputHook';
 import { Nullable } from 'components/types';
 import { PATH } from 'enums/pathes';
 import { requestStatus } from 'enums/request';
 import { validateEmail } from 'helpers/authorization/emailValidator';
 import { validatePassword } from 'helpers/authorization/passwordValidator';
+import { useInput } from 'hooks';
 import { setAppStatusAC } from 'store/reducers/app-reducer';
 import { setServerErrorAC } from 'store/reducers/errors-reducer';
 import { SignInTC } from 'store/reducers/signIn-reducer';
@@ -27,16 +27,12 @@ export const SignIn = () => {
   );
   const isAuth = useSelector<AppState, boolean>(state => state.signIn.isAuth);
 
+  const { value: email, onChange: handleEmail, clearValue: clearEmail } = useInput('');
   const {
-    inputValue: email,
-    handleInputValue: handleEmail,
-    resetInputValue: resetEmail,
-  } = InputHook('');
-  const {
-    inputValue: password,
-    handleInputValue: handlePassword,
-    resetInputValue: resetPassword,
-  } = InputHook('');
+    value: password,
+    onChange: handlePassword,
+    clearValue: clearPassword,
+  } = useInput('');
   const dispatch = useAppDispatch();
 
   const onChangeCheckbox = (e: ChangeEvent<HTMLInputElement>) =>
@@ -48,8 +44,8 @@ export const SignIn = () => {
   const onSubmit = () => {
     if (validateEmail(email) && validatePassword(password)) {
       dispatch(SignInTC(data));
-      resetEmail();
-      resetPassword();
+      clearEmail();
+      clearPassword();
       dispatch(setAppStatusAC(requestStatus.succeeded));
     }
     if (!validateEmail(email) || !validatePassword(password)) {
@@ -60,8 +56,8 @@ export const SignIn = () => {
     }
   };
   const onClickCancel = () => {
-    resetEmail();
-    resetPassword();
+    clearEmail();
+    clearPassword();
     dispatch(setAppStatusAC(requestStatus.idle));
   };
 
