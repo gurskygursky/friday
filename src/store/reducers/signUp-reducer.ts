@@ -19,7 +19,7 @@ export const toggleIsFetchingAC = (isFetching: boolean) =>
   } as const);
 export const toggleIsSignUpAC = (isSignUpSuccessful: boolean) =>
   ({
-    type: ACTIONS_TYPE.IS_SIGNUP_SUCCESSFUL,
+    type: ACTIONS_TYPE.IS_SIGN_UP_SUCCESSFUL,
     isSignUpSuccessful,
   } as const);
 export const setErrorAC = (error: null | string) =>
@@ -35,7 +35,7 @@ export const signUpReducer = (
         ...state,
         isFetching: action.isFetching,
       };
-    case ACTIONS_TYPE.IS_SIGNUP_SUCCESSFUL:
+    case ACTIONS_TYPE.IS_SIGN_UP_SUCCESSFUL:
       return {
         ...state,
         isSignUp: action.isSignUpSuccessful,
