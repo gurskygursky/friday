@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 import { instance } from 'api/api-config';
 import { Nullable } from 'components/types';
 
-export type AddNewPasswordType = {
+export type ForgotPasswordDataType = {
   email: Nullable<string>;
   from?: Nullable<string>;
   message?: Nullable<string>;
@@ -14,20 +14,20 @@ export type SetNewPasswordType = {
   resetPasswordToken?: Nullable<string>;
 };
 
-export type AddNewPasswordResponseType = {
+export type ForgotPasswordResponseType = {
   info: Nullable<string>;
   error: Nullable<string>;
 };
 
 export const forgotPasswordAPI = {
-  addNewPassword(params: AddNewPasswordType) {
-    return instance.post<AddNewPasswordType, AxiosResponse<AddNewPasswordResponseType>>(
-      'auth/forgot',
-      params,
-    );
+  forgot(params: ForgotPasswordDataType) {
+    return instance.post<
+      ForgotPasswordDataType,
+      AxiosResponse<ForgotPasswordResponseType>
+    >('auth/forgot', params);
   },
-  setNewPassword(params: SetNewPasswordType) {
-    return instance.post<SetNewPasswordType, AxiosResponse<AddNewPasswordResponseType>>(
+  set(params: SetNewPasswordType) {
+    return instance.post<SetNewPasswordType, AxiosResponse<ForgotPasswordResponseType>>(
       'auth/set-new-password',
       params,
     );
