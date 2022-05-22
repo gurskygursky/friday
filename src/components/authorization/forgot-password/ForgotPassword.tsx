@@ -34,7 +34,7 @@ padding: 15px;
 border-color: #ff9900; 
 width: 250px;
 height: 30px'> 
-password recovery link: <a href='https://gurskygursky.github.io/friday/#/createNewPassword/$token$'> recovery link </a></div>`,
+password recovery link: <a href='https://gurskygursky.github.io/friday/#/set-new-password/$token$'> recovery link </a></div>`,
   };
 
   const delay = 3000;
