@@ -44,11 +44,11 @@ export const SetNewPassword = (props: PropsType) => {
 
   return (
     <div className={s.box}>
-      <span className={s.textCenter}>Forgot your password?</span>
+      <span className={s.textCenter}>Choose a new password</span>
       <div className={s.inputContainer}>
         <CustomInput
-          placeholder="Email"
-          type="email"
+          placeholder="Password"
+          type="password"
           value={password}
           onChange={handlePassword}
         />
