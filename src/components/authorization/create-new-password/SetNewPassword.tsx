@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from 'react';
 
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import s from 'components/authorization/forgot-password/ForgotPassword.module.css';
 import { CustomButton } from 'components/custom-button';
@@ -9,6 +10,7 @@ import { Nullable } from 'components/types';
 import { validatePassword } from 'helpers/authorization/passwordValidator';
 import { setServerErrorAC } from 'store/reducers/errors-reducer';
 import { AppState, useAppDispatch } from 'store/store';
+import { SetNewPasswordTC } from 'store/thunk/SetNewPassword';
 
 type PropsType = {
   password: string;
@@ -22,10 +24,15 @@ export const SetNewPassword = (props: PropsType) => {
   const networkError = useSelector<AppState, Nullable<string> | undefined>(
     state => state.errors.networkError,
   );
+
+  const getToken = useParams<'token'>();
+  const { token } = getToken as { token: string };
+
+  const data = { password, token };
   const delay = 3000;
   const onSubmit = () => {
     if (validatePassword(password)) {
-      // dispatch(SetNewPasswordTC());
+      dispatch(SetNewPasswordTC(data));
       clearPassword();
     } else {
       dispatch(setServerErrorAC('Invalid data'));
