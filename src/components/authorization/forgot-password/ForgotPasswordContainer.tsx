@@ -4,7 +4,9 @@ import { ForgotPassword } from 'components/authorization/forgot-password/ForgotP
 import { useInput } from 'hooks';
 
 export const ForgotPasswordContainer = () => {
-  const { value: email, onChange: handleEmail } = useInput('');
+  const { value: email, onChange: handleEmail, clearValue: clearEmail } = useInput('');
 
-  return <ForgotPassword email={email} handleEmail={handleEmail} />;
+  return (
+    <ForgotPassword email={email} handleEmail={handleEmail} clearEmail={clearEmail} />
+  );
 };
