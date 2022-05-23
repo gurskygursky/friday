@@ -37,6 +37,7 @@ export const Profile = () => {
       />
       {email && <span style={{ color: 'white' }}>{email}</span>}
       <input
+        style={{ color: 'white' }}
         type="file"
         alt="image-input"
         name="image-input"
