@@ -2,6 +2,7 @@ import { authAPI } from 'api';
 import { Nullable } from 'components/types';
 import { ACTIONS_TYPE } from 'enums/actions';
 import { requestStatus, RequestStatusType } from 'enums/request';
+import { setUserProfileAC } from 'store/reducers/profile-reducer';
 import { setAuthSignInDataAC } from 'store/reducers/signIn-reducer';
 import { AppDispatch } from 'store/store';
 
@@ -41,8 +42,9 @@ export const initializedAppTC = () => (dispatch: AppDispatch) => {
   dispatch(setAppStatusAC(requestStatus.loading));
   authAPI
     .me()
-    .then(() => {
+    .then(response => {
       dispatch(setAuthSignInDataAC(true));
+      dispatch(setUserProfileAC(response.data));
       dispatch(setAppStatusAC(requestStatus.succeeded));
     })
     .catch(() => {})
@@ -62,4 +64,5 @@ export type InitialStateType = {
 export type ActionsApp =
   | ReturnType<typeof setAppStatusAC>
   | ReturnType<typeof setAppErrorAC>
-  | ReturnType<typeof setAppInitializedAC>;
+  | ReturnType<typeof setAppInitializedAC>
+  | ReturnType<typeof setUserProfileAC>;
