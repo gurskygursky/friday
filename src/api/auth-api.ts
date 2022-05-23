@@ -15,6 +15,9 @@ export const authAPI = {
   logout() {
     return instance.delete<AxiosResponse<LoginResponseType>>(`auth/me`, {});
   },
+  me() {
+    return instance.post(`auth/me`);
+  },
 };
 
 export type RegisterParamsType = {
