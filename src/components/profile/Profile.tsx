@@ -45,9 +45,7 @@ export const Profile = () => {
         accept=".jpg, .jpeg, .png"
         onChange={() => {}}
       />
-      <div className={s.btn}>
-        <CustomButton title="LOGOUT" onClick={onClickLogout} />
-      </div>
+      <CustomButton title="LOGOUT" onClick={onClickLogout} />
     </div>
   );
 };
