@@ -1,6 +1,9 @@
+import { authAPI } from 'api';
 import { Nullable } from 'components/types';
 import { ACTIONS_TYPE } from 'enums/actions';
 import { requestStatus, RequestStatusType } from 'enums/request';
+import { setAuthSignInDataAC } from 'store/reducers/signIn-reducer';
+import { AppDispatch } from 'store/store';
 
 export const initialState: InitialStateType = {
   status: requestStatus.idle,
@@ -32,6 +35,21 @@ export const setAppErrorAC = (error: Nullable<string>) =>
   ({ type: ACTIONS_TYPE.SET_APP_ERROR, error } as const);
 export const setAppInitializedAC = (isInitialized: boolean) =>
   ({ type: ACTIONS_TYPE.APP_IS_INITIALIZED, isInitialized } as const);
+
+// thunk
+export const initializedAppTC = () => (dispatch: AppDispatch) => {
+  dispatch(setAppStatusAC(requestStatus.loading));
+  authAPI
+    .me()
+    .then(() => {
+      dispatch(setAuthSignInDataAC(true));
+      dispatch(setAppStatusAC(requestStatus.succeeded));
+    })
+    .catch(() => {})
+    .finally(() => {
+      dispatch(setAppInitializedAC(true));
+    });
+};
 
 // types
 
