@@ -58,6 +58,10 @@ body {
     font-size: 16px;
     text-align: start;
 }
+.avatar {
+    width: 128px;
+    height: 128px;
+}
 
 /* Customize the label (the container) */
 .container {

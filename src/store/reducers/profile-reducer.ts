@@ -1,13 +1,51 @@
-const initialState = {};
+import { ACTIONS_TYPE } from 'enums/actions';
 
-// Use the initialState as a default value
-export const profileReducer = (state = initialState, action: any) => {
-  // The reducer normally looks at the action type field to decide what happens
+const initialState = {
+  profile: {
+    _id: '',
+    avatar: null as string | null,
+    name: '',
+    email: '',
+    publicCardPacksCount: null as number | null,
+    created: null as Date | null,
+    updated: null as Date | null,
+    isAdmin: null as boolean | null,
+    verified: null as boolean | null,
+    rememberMe: null as boolean | null,
+    error: null as string | null,
+  },
+};
+
+export const profileReducer = (
+  state: InitialStateType = initialState,
+  action: ActionsProfile,
+): InitialStateType => {
   switch (action.type) {
-    // Do something here based on the different types of actions
+    case ACTIONS_TYPE.SET_USER_DATA:
+      return { ...state, ...action.payload };
     default:
-      // If this reducer doesn't recognize the action type, or doesn't
-      // care about this specific action, return the existing state unchanged
       return state;
   }
 };
+export const setUserData = (_id: string, name: string, avatar: string) =>
+  ({ type: ACTIONS_TYPE.SET_USER_DATA, payload: { _id, name, avatar } } as const);
+
+// type ResponseDataType = null | {
+//   _id: string;
+//   email: string;
+//   name: string;
+//   avatar?: string | null;
+//   publicCardPacksCount: number;
+//
+//   created: Date | null;
+//   updated: Date | null;
+//   isAdmin: boolean;
+//   verified: boolean;
+//   rememberMe: boolean;
+//
+//   error?: string;
+// };
+
+export type InitialStateType = typeof initialState;
+
+export type ActionsProfile = ReturnType<typeof setUserData>;
